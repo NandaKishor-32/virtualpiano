@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=music_note" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body{
+            background-color: aliceblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+
+        }
+        .container{
+            width: 780px;
+           background-color:  rgb(22, 22, 22);
+          padding: 35px 40px;
+          border-radius: 20px;
+        }
+        header{
+            color: azure;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .volume-column{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 200px;
+        }
+        .volume-column input{
+            accent-color: azure;
+        }
+        .toggle-button{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 150px;
+
+        }
+        .toggle-button input{
+            appearance: none;
+            width: 60px;
+            height: 30px;
+            border-radius: 20px;
+             background-color: azure;
+            position: relative;
+            cursor: pointer;
+           border: 1px solid rgb(123, 123, 123);
+        }
+        .toggle-button input::before{
+            content: "";
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            border-radius: inherit;
+            top: 50%;
+            left: 35px;
+            background-color: rgb(0, 0, 0);
+            transform: translateY(-50%);
+            transition: .26s linear;
+           
+            
+        }
+        .toggle-button input:checked::before {
+            left: 5px;
+            transition: .26s linear;
+            background-color: rgb(255, 255, 255);
+        }
+       
+        .toggle-button input:checked{
+            background-color: rgb(49, 48, 48);
+           transition: .3s linear;
+        }
+       
+        .keys{
+            display: flex;
+           
+            margin-top: 30px;
+            list-style: none;
+            text-transform: capitalize;
+
+        }
+        .keys .white{
+            width: 70px;
+            background-color: rgb(239, 239, 239);
+            border-radius: 0px 0px 8px 8px;
+            height: 230px;
+            border: 1px solid black;
+            box-shadow: inset 8px 8px 17px white,inset -5px -5px 10px rgb(227, 227, 226);
+        }
+        .keys .white:active{
+            box-shadow: inset 5px 5px 10px rgb(227, 227, 226),inset -5px -5px 17px white;
+        }
+       .keys .black{
+            margin: 0px -22px 0px -22px;
+            z-index: 2;
+            background-color: rgb(22, 22, 22);
+            height: 140px;
+            width: 44px;
+            border: 1px solid black;
+            border-radius: 0px 0px 5px 5px;
+            color: aliceblue;
+            box-shadow: inset 8px 5px 17px rgb(49, 49, 49),inset -5px -5px 10px black;
+        }
+        .key{
+            position: relative;
+        }
+        .key span{
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            width: 100%;
+            opacity: 1;
+            text-transform: uppercase;
+        }
+        .black span{
+             color: white;
+        }
+        .white span{
+            color: black;
+        }
+        @media(width<900px)  {
+            .container{
+                transform: rotate(90deg);
+                max-width: 680px;
+                padding: 25px 30px;
+                
+            }
+            .key{
+                max-width: 70px;
+               /*  min-width: 45px;
+                width: 100%; */
+            }
+        }
+      /*   .musicnote{
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            transition: all 3s;
+            opacity: 1;
+            font-size: large;
+        }
+        */
+        .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+        
+        }
+        .musicnote {
+    animation: floatUp 3s ease-out forwards;
+    color: #0fe4e0;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, 0); 
+    
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+         filter: hue-rotate(0deg);
+    }
+    50%{
+        filter: hue-rotate(3000deg);
+    }
+    100% {
+        transform: translate(-50%, -100px);
+        opacity: 0;
+         filter: hue-rotate(5000deg);
+
+    }
+}
+input:checked~.key span{
+    opacity: 0;
+}
+
+    </style>
+</head>
+<body>
+  
+    <div class="container">
+        <header>
+            <div class="volume-column">
+                <span>Volume</span>
+                <input type="range" min="0" max="100" step="1"  class="range">
+            </div>
+            <div class="toggle-button">
+                <span>Show keys</span>
+                <input type="checkbox">
+            </div>
+        </header>
+        
+            <ul class="keys">
+                
+                <li class="key white" data-key="a"><span>a</span></li>
+                <li class="key black" data-key="w"><span>w</span></li>
+                <li class="key white" data-key="s"><span>s</span></li>
+                <li class="key black" data-key="e"><span>e</span></li>
+                <li class="key white" data-key="d"><span>d</span></li>
+                <li class="key white" data-key="f"><span>f</span></li>
+                <li class="key black" data-key="t"><span>t</span></li>
+                <li class="key white" data-key="g"><span>g</span></li>
+                <li class="key black" data-key="y"><span>y</span></li>
+                <li class="key white" data-key="h"><span>h</span></li>
+                <li class="key black" data-key="u"><span>u</span></li>
+                <li class="key white" data-key="j"><span>j</span></li>
+                <li class="key white" data-key="k"><span>k</span></li>
+                <li class="key black" data-key="o"><span>o</span></li>
+                <li class="key white" data-key="l"><span>l</span></li>
+                <li class="key black" data-key="p"><span>p</span></li>
+                <li class="key white" data-key=";"><span>;</span></li>
+            </ul>
+        
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
