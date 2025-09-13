@@ -17,13 +17,13 @@ names.forEach(name=>{
 })
 })
 
- let audio=new Audio('tunes/a.wav')
+ let audio=new Audio('/a.wav')
 
 const playTune = (keyChar) => {
     const keyElement = document.querySelector(`.key[data-key="${keyChar}"]`);
     if (!keyElement) return;
 
-    audio.src = `tunes/${keyChar}.wav`;
+    audio.src = `/${keyChar}.wav`;
     audio.currentTime = 0;
     audio.play();
 
@@ -69,5 +69,6 @@ audio.volume=1
 range.addEventListener('input',()=>{
   audio.volume=range.value/100
 })
+
 
 
